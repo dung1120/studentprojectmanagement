@@ -1,0 +1,34 @@
+@startuml
+|Sinh viên|
+start
+
+:Truy cập đồ án;
+:Lựa chọn mục tài liệu;
+
+|Hệ thống|
+:Hiển thị cửa sổ tài liệu;
+
+|Sinh viên|
+if (Hành động?) then (Upload tài liệu)
+    :Upload tài liệu;
+
+    |Hệ thống|
+    :Hiển thị cửa sổ upload tài liệu;
+
+    |Sinh viên|
+    :Tải lên tài liệu;
+elseif (Tìm kiếm tài liệu)
+    :Tìm kiếm tài liệu;
+
+if (Tác vụ?) then (Chỉnh sửa)
+    :Chỉnh sửa tài liệu;
+else (Tải xuống)
+    :Tải xuống tài liệu;
+endif
+
+endif
+
+|Hệ thống|
+:Thông báo kết quả thao tác;
+stop
+@enduml
