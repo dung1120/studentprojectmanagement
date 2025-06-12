@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+object GiangVien {
+    maGV = "GV1001"
+    hoTen = "Nguyễn Văn A"
+}
+
+object DoAn {
+    maDoAn = "DA2025"
+    tieuDe = "Hệ thống quản lý đồ án"
+    linhVuc = "Công nghệ phần mềm"
+    hocKi = "20242"
+    trangThai = "Đang quản lý"
+}
+
+object GiaoDienQuanLy {
+    trangThai = "Hiển thị"
+}
+
+object ThongBao {
+    noiDung = "Cập nhật thành công"
+    trangThai = "Hiển thị"
+}
+
+GiangVien --> DoAn : truy cập, chỉnh sửa, xóa
+DoAn --> GiaoDienQuanLy : hiển thị thông tin
+DoAn --> ThongBao : phản hồi thao tác
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+
+object Project {
+    projectId = "PJ1001"
+    title = "PTTKHT quản lý đồ án"
+    field = "Khoa học máy tính"
+    semester = "20242"
+    grade = 4.0
+}
+
+object Student1 {
+    studentId = "SV1001"
+    name = "Lê Văn C"
+    major = "Khoa học máy tính"
+    course = "K65"
+}
+
+object Student2 {
+    studentId = "SV1002"
+    name = "Lê Văn B"
+    major = "Khoa học máy tính"
+    course = "K65"
+}
+
+object Mentor {
+    mentorId = "GV1001"
+    name = "Nguyễn Văn A"
+    department = "Khoa vật lý"
+    position = "Trưởng khoa"
+}
+
+Project --> Student1 : thực hiện bởi
+Project --> Student2 : thực hiện bởi
+Project --> Mentor : được tạo và quản lý bởi
+@enduml

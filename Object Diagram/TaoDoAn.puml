@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+object GiangVien {
+    maGV = "GV001"
+    hoTen = "Nguyễn Văn A"
+}
+
+object FormTaoDoAn {
+    trangThai = "Hiển thị"
+    duLieuNhap = "Thông tin đồ án mới"
+}
+
+object DoAn {
+    maDoAn = "DA1001"
+    tieuDe = "Hệ thống quản lý đồ án"
+    linhVuc = "CNTT"
+    hocKi = "20242"
+}
+
+object ThongBao {
+    noiDung = "Tạo đồ án thành công"
+    trangThai = "Hiển thị"
+}
+
+GiangVien --> FormTaoDoAn : yêu cầu tạo đồ án
+FormTaoDoAn --> DoAn : nhập thông tin
+DoAn --> ThongBao : thông báo kết quả
+@enduml

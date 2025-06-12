@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+
+object GiangVien {
+  maGV = "GV001"
+  hoTen = "Nguyễn Văn A"
+}
+
+object SinhVien {
+  maSV = "SV001"
+  hoTen = "Trần Thị B"
+}
+
+object NhiemVu {
+  maNV = "NV1001"
+  tieuDe = "Nhiệm vụ 1"
+  trangThai = "Đang thực hiện"
+}
+
+object BaiLam {
+  maBL = "BL1001"
+  noiDung = "Bài làm nhiệm vụ 1"
+  trangThai = "Đã nộp"
+}
+
+object DanhGia {
+  maDG = "DG1001"
+  diem = 9.5
+  nhanXet = "Tốt"
+}
+
+GiangVien --> NhiemVu : giao nhiệm vụ
+NhiemVu --> SinhVien : cập nhật danh sách
+SinhVien --> NhiemVu : xem nhiệm vụ
+SinhVien --> BaiLam : nộp bài
+BaiLam --> NhiemVu : cập nhật bài làm
+GiangVien --> DanhGia : đánh giá nhiệm vụ
+DanhGia --> NhiemVu : cập nhật đánh giá
+SinhVien --> DanhGia : xem đánh giá
+@enduml

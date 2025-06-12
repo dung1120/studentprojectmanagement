@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+object SinhVien {
+    maSV = "SV1001"
+    hoTen = "Lê Thị H"
+}
+
+object GiangVien {
+    maGV = "GV1001"
+    hoTen = "Nguyễn Văn B"
+}
+
+object BaoCao {
+    maBC = "BC2025"
+    tieuDe = "Báo cáo đồ án"
+    trangThai = "Đã nộp"
+    noiDung = "Nội dung báo cáo..."
+}
+
+object DanhGia {
+    maDG = "DG2025"
+    diem = 8.5
+    nhanXet = "Báo cáo đạt yêu cầu"
+}
+
+SinhVien --> BaoCao : nộp, cập nhật
+GiangVien --> BaoCao : xem
+GiangVien --> DanhGia : đánh giá, cập nhật đánh giá
+SinhVien --> DanhGia : xem đánh giá
+@enduml
