@@ -1,0 +1,39 @@
+@startuml
+actor "Giảng viên" as GV
+participant "Giao diện" as UI
+participant "Controller" as C
+participant "Hệ thống" as HT
+
+== Truy cập và xem thông tin ==
+GV -> UI : Truy cập mục thông tin đồ án
+UI -> C : loadProjectInfo()
+C -> HT : getProjectInfo()
+HT --> C : Dữ liệu đồ án
+C --> UI : Hiển thị giao diện quản lý thông tin
+UI --> GV : Giao diện thông tin đồ án
+
+== Chỉnh sửa thông tin ==
+GV -> UI : Chọn chỉnh sửa đồ án
+UI -> C : editProjectForm(projectId)
+C -> HT : getProjectDetail(projectId)
+HT --> C : Thông tin chi tiết
+C --> UI : Hiển thị form chỉnh sửa
+UI --> GV : Form cập nhật
+
+GV -> UI : Nhập thông tin mới và gửi
+UI -> C : updateProject(data)
+activate C
+C -> HT : validateAndUpdate(data)
+HT --> C : Kết quả cập nhật
+deactivate C
+C --> UI : Thông báo thành công
+UI --> GV : Cập nhật thành công
+
+== Hoặc: Xóa thông tin ==
+GV -> UI : Chọn xóa đồ án
+UI -> C : deleteProject(projectId)
+C -> HT : removeProject(projectId)
+HT --> C : Xóa thành công
+C --> UI : Thông báo xóa thành công
+UI --> GV : Xóa thành công
+@enduml

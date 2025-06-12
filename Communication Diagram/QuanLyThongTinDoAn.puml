@@ -1,0 +1,27 @@
+@startuml
+actor "Giảng viên" as GV
+participant "Giao diện quản lý" as UI
+participant "Controller quản lý đồ án" as Controller
+participant "Hệ thống đồ án" as System
+
+GV -> UI : Truy cập đồ án cần quản lý
+UI -> Controller : Yêu cầu hiển thị giao diện quản lý
+Controller -> System : Lấy thông tin đồ án
+System --> Controller : Trả về thông tin đồ án
+Controller --> UI : Hiển thị giao diện quản lý
+
+GV -> UI : Chọn chỉnh sửa thông tin đồ án
+UI -> Controller : Hiển thị form chỉnh sửa
+
+GV -> UI : Nhập thông tin mới
+UI -> Controller : Gửi dữ liệu cập nhật
+Controller -> System : Kiểm tra và cập nhật thông tin
+System --> Controller : Xác nhận cập nhật thành công
+Controller --> UI : Thông báo cập nhật thành công
+
+GV -> UI : Hoặc chọn xóa đồ án
+UI -> Controller : Gửi yêu cầu xóa
+Controller -> System : Thực hiện xóa
+System --> Controller : Xác nhận xóa thành công
+Controller --> UI : Thông báo xóa thành công
+@enduml

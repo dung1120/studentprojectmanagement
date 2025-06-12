@@ -1,0 +1,17 @@
+@startuml
+title Sơ đồ trạng thái Đồ án
+
+[*] --> Đang_chờ_nhập_thông_tin : Giáo viên tạo dự án
+
+state Đang_chờ_nhập_thông_tin
+Đang_chờ_nhập_thông_tin --> Đang_chờ_xử_lý : không chấp thuận
+Đang_chờ_nhập_thông_tin --> Yêu_cầu_đề_tài : Sinh viên đề xuất đề tài
+
+state Yêu_cầu_đề_tài
+Yêu_cầu_đề_tài --> Đang_chờ_xử_lý : yêu cầu được gửi cho giáo viên
+Yêu_cầu_đề_tài --> Đang_được_thực_hiện : được chấp thuận
+
+Đang_được_thực_hiện --> Đang_chờ_đánh_giá : Sinh viên hoàn thành đồ án
+Đang_chờ_đánh_giá --> [*] : giáo viên hoàn tất đánh giá
+
+@enduml

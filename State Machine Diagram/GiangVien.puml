@@ -1,0 +1,51 @@
+@startuml
+title Biểu đồ trạng thái - Giảng viên
+
+[*] --> Nhap_thong_tin : Giảng viên tạo đồ án
+
+state Nhap_thong_tin {
+}
+
+state QL_thong_tin {
+}
+
+state Doi_bao_cao {
+}
+
+state Cho_chon {
+}
+
+state Hien_nhiem_vu {
+}
+
+state Cho_xac_nhan {
+}
+
+state Cap_nhat_nhiem_vu {
+}
+
+state Cap_nhat_danh_gia {
+}
+
+state Tong_hop {
+}
+
+Nhap_thong_tin --> QL_thong_tin : Thêm sinh viên thành công
+QL_thong_tin --> Doi_bao_cao : Giao nhiệm vụ
+
+Doi_bao_cao --> Cho_chon : Giáo viên xem nhiệm vụ của sinh viên
+Cho_chon --> Hien_nhiem_vu : Chọn sinh viên
+
+Hien_nhiem_vu --> Cho_xac_nhan : Giáo viên nhập tiến độ nhiệm vụ
+Cho_xac_nhan --> Cap_nhat_nhiem_vu : Xác nhận
+
+Hien_nhiem_vu --> Cho_xac_nhan : Thêm nhiệm vụ
+
+Hien_nhiem_vu --> Cap_nhat_danh_gia : Đánh giá sinh viên
+Cap_nhat_danh_gia --> [*] : Hoàn thành
+Cap_nhat_nhiem_vu --> [*] : Hoàn thành
+
+Doi_bao_cao --> Tong_hop : Sinh viên hoàn thành đồ án
+Tong_hop --> [*] : Trả kết quả
+
+@enduml

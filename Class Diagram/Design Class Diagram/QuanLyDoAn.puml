@@ -1,0 +1,29 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class DoAn {
+    - maDoAn: String
+    - tenDoAn: String
+    - moTa: String
+    - trangThai: String
+    + xemChiTiet(): void
+}
+
+class SinhVien {
+    - maSV: String
+    - hoTen: String
+    - email: String
+    + timKiemDoAn(tuKhoa: String): List<DoAn>
+    + xemDoAn(da: DoAn): void
+}
+
+class HeThong {
+    + hienThiGiaoDien(): void
+    + traCuuDoAn(tuKhoa: String): List<DoAn>
+}
+
+SinhVien "1" --> "0..*" DoAn : quản lý >
+SinhVien --> HeThong : sử dụng >
+HeThong --> DoAn : truy xuất >
+
+@enduml

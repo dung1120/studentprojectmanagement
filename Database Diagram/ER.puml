@@ -1,0 +1,64 @@
+@startuml
+!define table(x) class x << (T,#FFAAAA) >>
+!define primaryKey(x) <u>x</u>
+!define foreignKey(x) <i>x</i>
+
+table(SinhVien) {
+  primaryKey(MaSV): varchar
+  TenSV: varchar
+  Lop: varchar
+  Email: varchar
+}
+
+table(GiangVien) {
+  primaryKey(MaGV): varchar
+  TenGV: varchar
+  Khoa: varchar
+  Email: varchar
+}
+
+table(DoAn) {
+  primaryKey(MaDoAn): varchar
+  TenDoAn: varchar
+  MoTa: text
+  TrangThai: varchar
+  foreignKey(MaGV): varchar
+}
+
+table(BaoCao) {
+  primaryKey(MaBaoCao): varchar
+  NgayNop: date
+  NoiDung: text
+  foreignKey(MaDoAn): varchar
+}
+
+table(NhiemVu) {
+  primaryKey(MaNhiemVu): varchar
+  TenNhiemVu: varchar
+  TienDo: int
+  foreignKey(MaDoAn): varchar
+}
+
+table(DanhGia) {
+  primaryKey(MaDanhGia): varchar
+  Diem: int
+  NhanXet: text
+  NgayDanhGia: date
+  foreignKey(MaBaoCao): varchar
+}
+
+table(ThamGia) {
+  primaryKey(MaSV): varchar
+  primaryKey(MaDoAn): varchar
+  VaiTro: varchar
+  NgayThamGia: date
+}
+
+SinhVien -- ThamGia
+DoAn -- ThamGia
+DoAn -- BaoCao
+DoAn -- NhiemVu
+BaoCao -- DanhGia
+GiangVien -- DoAn
+
+@enduml

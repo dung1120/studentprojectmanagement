@@ -1,0 +1,30 @@
+@startuml
+actor "Giảng viên" as GV
+participant "Giao diện (UI)" as UI
+participant "Bộ điều khiển (Controller)" as C
+participant "Hệ thống (Model)" as HT
+
+== Mở giao diện quản lý báo cáo ==
+GV -> UI : Mở cửa sổ quản lý báo cáo
+UI -> C : Yêu cầu danh sách báo cáo
+C -> HT : getAllReports()
+HT --> C : danh sách báo cáo
+C --> UI : truyền danh sách
+UI --> GV : Hiển thị cửa sổ báo cáo
+
+== Chọn báo cáo cần đánh giá ==
+GV -> UI : Chọn báo cáo
+UI -> C : getReportDetail(reportId)
+C -> HT : Lấy chi tiết báo cáo
+HT --> C : chi tiết báo cáo
+C --> UI : Hiển thị form thông tin báo cáo
+UI --> GV : Hiển thị form đánh giá
+
+== Nhập đánh giá và feedback ==
+GV -> UI : Nhập thông tin đánh giá và phản hồi
+UI -> C : submitEvaluation(reportId, data)
+C -> HT : Lưu đánh giá vào hệ thống
+HT --> C : Kết quả lưu
+C --> UI : Thông báo thành công
+UI --> GV : Hiển thị thông báo
+@enduml

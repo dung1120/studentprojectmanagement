@@ -1,0 +1,41 @@
+@startuml
+class GiangVien {
+    - maGV
+    - hoTen
+    + giaoNhiemVu()
+    + danhGiaNhiemVu()
+}
+
+class SinhVien {
+    - maSV
+    - hoTen
+    + xemNhiemVu()
+    + nopBai()
+    + xemDanhGia()
+}
+
+class NhiemVu {
+    - maNhiemVu
+    - tieuDe
+    - noiDung
+    - trangThai
+    + capNhatDanhSach()
+    + capNhatBaiLam()
+    + capNhatDanhGia()
+}
+
+class FormNhiemVu {
+    + hienThiDanhSach()
+    + nhapThongTinNhiemVu()
+    + hienThiDanhGia()
+}
+
+class ThongBao {
+    + hienThiThanhCong()
+}
+
+GiangVien --> FormNhiemVu : sử dụng giao diện giao nhiệm vụ, đánh giá
+SinhVien --> FormNhiemVu : sử dụng giao diện xem, nộp bài, xem đánh giá
+FormNhiemVu --> NhiemVu : thao tác dữ liệu nhiệm vụ
+NhiemVu --> ThongBao : thông báo kết quả
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+class BaoCao {
+    - maBaoCao: String
+    - tieuDe: String
+    - noiDung: String
+    - ngayNop: Date
+    - trangThai: String
+    + capNhat(noiDungMoi: String): void
+}
+
+class DanhGiaBaoCao {
+    - maDanhGia: String
+    - diem: Float
+    - nhanXet: String
+    + capNhat(diemMoi: Float, nhanXetMoi: String): void
+}
+
+class SinhVien {
+    - maSV: String
+    - tenSV: String
+    + nopBaoCao(baoCao: BaoCao): void
+    + capNhatBaoCao(baoCao: BaoCao): void
+    + xemDanhGia(baoCao: BaoCao): DanhGiaBaoCao
+}
+
+class GiangVien {
+    - maGV: String
+    - tenGV: String
+    + xemBaoCao(baoCao: BaoCao): void
+    + danhGiaBaoCao(baoCao: BaoCao, danhGia: DanhGiaBaoCao): void
+    + capNhatDanhGia(danhGia: DanhGiaBaoCao): void
+}
+
+class HeThong {
+    + luuBaoCao(): void
+    + luuDanhGia(): void
+    + truyVanBaoCao(): List<BaoCao>
+}
+
+SinhVien "1" --> "0..*" BaoCao : nộp >
+SinhVien "1" --> "0..*" DanhGiaBaoCao : xem >
+GiangVien "1" --> "0..*" BaoCao : xem >
+GiangVien "1" --> "0..*" DanhGiaBaoCao : đánh giá >
+
+BaoCao "1" --> "0..1" DanhGiaBaoCao : có >
+HeThong --> BaoCao : quản lý >
+HeThong --> DanhGiaBaoCao : quản lý >
+
+SinhVien --> HeThong : sử dụng >
+GiangVien --> HeThong : sử dụng >
+
+@enduml

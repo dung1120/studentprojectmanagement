@@ -1,0 +1,25 @@
+@startuml
+actor "Giảng viên" as GV
+
+participant "Giao diện báo cáo" as UI
+participant "Controller báo cáo" as Controller
+participant "Hệ thống báo cáo" as System
+
+GV -> UI : Yêu cầu xem danh sách báo cáo
+UI -> Controller : Lấy danh sách báo cáo
+Controller -> System : Truy xuất báo cáo
+System --> Controller : Trả danh sách báo cáo
+Controller --> UI : Hiển thị danh sách báo cáo
+
+GV -> UI : Chọn báo cáo để đánh giá
+UI -> Controller : Lấy chi tiết báo cáo
+Controller -> System : Truy xuất chi tiết báo cáo
+System --> Controller : Trả chi tiết báo cáo
+Controller --> UI : Hiển thị chi tiết báo cáo
+
+GV -> UI : Nhập đánh giá và feedback
+UI -> Controller : Gửi dữ liệu đánh giá
+Controller -> System : Lưu hoặc cập nhật đánh giá
+System --> Controller : Xác nhận thành công
+Controller --> UI : Hiển thị thông báo thành công
+@enduml

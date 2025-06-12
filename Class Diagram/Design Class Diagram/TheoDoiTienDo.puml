@@ -1,0 +1,64 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+class NhiemVu {
+    - maNhiemVu: String
+    - tieuDe: String
+    - noiDung: String
+    - trangThai: String
+    - ngayGiao: Date
+    - hanNop: Date
+    + capNhatDanhSach(): void
+    + xemChiTiet(): void
+}
+
+class BaiLam {
+    - maBaiLam: String
+    - noiDung: String
+    - ngayNop: Date
+    - trangThai: String
+    + capNhatNoiDung(moiNoiDung: String): void
+}
+
+class DanhGia {
+    - maDanhGia: String
+    - diem: Float
+    - nhanXet: String
+    + capNhatDanhGia(diemMoi: Float, nhanXetMoi: String): void
+}
+
+class GiangVien {
+    - maGV: String
+    - tenGV: String
+    + giaoNhiemVu(nhiemVu: NhiemVu): void
+    + danhGiaNhiemVu(baiLam: BaiLam, danhGia: DanhGia): void
+}
+
+class SinhVien {
+    - maSV: String
+    - tenSV: String
+    + xemDanhSachNhiemVu(): List<NhiemVu>
+    + nopBaiLam(nhiemVu: NhiemVu, baiLam: BaiLam): void
+    + xemDanhGia(nhiemVu: NhiemVu): DanhGia
+}
+
+class HeThong {
+    + capNhatDanhSachNhiemVu(): void
+    + luuBaiLam(): void
+    + luuDanhGia(): void
+}
+
+GiangVien "1" --> "0..*" NhiemVu : giao >
+SinhVien "1" --> "0..*" BaiLam : nộp >
+BaiLam "1" --> "1" NhiemVu : thuộc về >
+DanhGia "1" --> "1" BaiLam : đánh giá >
+GiangVien "1" --> "0..*" DanhGia : thực hiện >
+
+GiangVien --> HeThong : sử dụng >
+SinhVien --> HeThong : sử dụng >
+HeThong --> NhiemVu : quản lý >
+HeThong --> BaiLam : quản lý >
+HeThong --> DanhGia : quản lý >
+
+@enduml

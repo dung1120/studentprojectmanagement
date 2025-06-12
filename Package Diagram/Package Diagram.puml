@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+package "Lớp Trình Diễn (Presentation Layer)" {
+    [Giao diện Người dùng]
+    [API Giao diện Web]
+}
+
+package "Lớp Nghiệp Vụ (Business Logic Layer)" {
+    [Quản lý Đồ án]
+    [Quản lý Báo cáo]
+    [Quản lý Nhiệm vụ]
+}
+
+package "Lớp Truy cập Dữ liệu (Data Access Layer)" {
+    [Đơn vị Truy cập Đồ án (DoAnDAO)]
+    [Đơn vị Truy cập Báo cáo (BaoCaoDAO)]
+    [Đơn vị Truy cập Nhiệm vụ (NhiemVuDAO)]
+}
+
+' Mối quan hệ phụ thuộc
+[Giao diện Người dùng] --> [Quản lý Đồ án]
+[Giao diện Người dùng] --> [Quản lý Báo cáo]
+[Giao diện Người dùng] --> [Quản lý Nhiệm vụ]
+
+[Quản lý Đồ án] --> [Đơn vị Truy cập Đồ án (DoAnDAO)]
+[Quản lý Báo cáo] --> [Đơn vị Truy cập Báo cáo (BaoCaoDAO)]
+[Quản lý Nhiệm vụ] --> [Đơn vị Truy cập Nhiệm vụ (NhiemVuDAO)]
+
+@enduml

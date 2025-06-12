@@ -1,0 +1,46 @@
+@startuml
+' Biểu đồ lớp phân tích - Quản lý đồ án
+
+class Project {
+    - projectId
+    - title
+    - field
+    - semester
+    - grade
+    + create()
+    + edit()
+    + delete()
+    + search()
+    + viewDetails()
+}
+
+class Student {
+    - studentId
+    - name
+    - major
+    - course
+    + viewProject()
+    + searchProject()
+}
+
+class Mentor {
+    - mentorId
+    - name
+    - department
+    - position
+    + createProject()
+    + editProject()
+    + deleteProject()
+}
+
+class ProjectManagementInterface {
+    + displayProjectList()
+    + displayForm()
+    + inputProjectInfo()
+    + showMessage()
+}
+
+Mentor --> Project : tạo / chỉnh sửa / xóa
+Student --> Project : tìm kiếm / xem
+ProjectManagementInterface --> Project : thao tác với
+@enduml

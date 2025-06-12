@@ -1,0 +1,19 @@
+@startuml
+actor "Sinh viên" as SV
+
+participant "Giao diện báo cáo" as UI
+participant "Controller báo cáo" as Controller
+participant "Hệ thống báo cáo" as System
+
+SV -> UI : Truy cập form nộp báo cáo
+UI -> Controller : Yêu cầu form nộp báo cáo
+Controller -> System : Lấy dữ liệu cần thiết
+System --> Controller : Trả dữ liệu
+Controller --> UI : Hiển thị form nộp báo cáo
+
+SV -> UI : Nhập thông tin và nộp báo cáo
+UI -> Controller : Gửi dữ liệu báo cáo
+Controller -> System : Lưu hoặc cập nhật báo cáo
+System --> Controller : Xác nhận lưu thành công
+Controller --> UI : Hiển thị thông báo thành công
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+actor "Giảng viên" as GV
+participant "UI Controller" as UI
+participant "Form tạo đồ án" as Form
+participant "Hệ thống" as System
+
+GV -> UI : Bấm "Tạo đồ án mới"
+UI -> Form : Hiển thị form tạo đồ án
+GV -> Form : Nhập thông tin đồ án
+Form -> UI : Gửi dữ liệu nhập
+UI -> System : Lưu thông tin đồ án
+System --> UI : Xác nhận lưu thành công
+UI --> GV : Thông báo tạo đồ án thành công
+@enduml

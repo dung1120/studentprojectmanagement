@@ -1,0 +1,17 @@
+@startuml
+actor "Giảng viên" as GV
+participant "Giao diện quản lý" as UI
+participant "Controller nhiệm vụ" as Controller
+participant "Hệ thống nhiệm vụ" as System
+
+GV -> UI : Yêu cầu tạo nhiệm vụ mới
+UI -> Controller : Hiển thị form nhiệm vụ
+GV -> UI : Nhập thông tin nhiệm vụ
+UI -> Controller : Gửi dữ liệu nhiệm vụ
+Controller -> System : Lưu nhiệm vụ mới
+System --> Controller : Xác nhận lưu thành công
+Controller -> System : Cập nhật danh sách nhiệm vụ
+System --> Controller : Xác nhận cập nhật
+Controller --> UI : Thông báo tạo nhiệm vụ thành công
+UI --> GV : Hiển thị thông báo
+@enduml

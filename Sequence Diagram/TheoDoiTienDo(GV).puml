@@ -1,0 +1,43 @@
+@startuml
+actor "Giảng viên" as GV
+participant "Giao diện (UI)" as UI
+participant "Bộ điều khiển (Controller)" as C
+participant "Hệ thống (Model)" as HT
+
+GV -> UI : Mở cửa sổ quản lý đồ án
+UI -> C : chọn mục nhiệm vụ
+C -> HT : lấy danh sách nhiệm vụ
+HT --> C : danh sách nhiệm vụ
+C --> UI : hiển thị danh sách
+UI --> GV : hiện cửa sổ nhiệm vụ
+
+GV -> UI : Chọn tạo nhiệm vụ mới
+UI -> C : yêu cầu form tạo nhiệm vụ
+C -> HT : lấy dữ liệu form
+HT --> C : dữ liệu form
+C --> UI : hiển thị form tạo nhiệm vụ
+UI --> GV : hiển thị form
+
+GV -> UI : Nhập thông tin nhiệm vụ
+UI -> C : gửi dữ liệu nhiệm vụ mới
+C -> HT : lưu nhiệm vụ
+HT --> C : kết quả lưu
+C --> UI : thông báo kết quả
+UI --> GV : thông báo thành công
+
+GV -> UI : Chọn bài làm cần đánh giá
+UI -> C : lấy nội dung bài làm
+C -> HT : lấy bài làm chi tiết
+HT --> C : bài làm chi tiết
+C --> UI : hiển thị bài làm
+UI --> GV : hiển thị nội dung bài làm
+
+GV -> UI : Nhập đánh giá và điểm số
+UI -> C : gửi đánh giá
+activate C
+C -> HT : lưu đánh giá
+HT --> C : kết quả lưu
+deactivate C
+C --> UI : thông báo đánh giá thành công
+UI --> GV : hiện thông báo
+@enduml

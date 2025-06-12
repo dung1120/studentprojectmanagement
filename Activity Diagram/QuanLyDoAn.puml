@@ -1,0 +1,26 @@
+@startuml
+|Hệ thống|
+start
+:Hiển thị cửa sổ quản lý đồ án;
+
+|Sinh viên|
+if (Hành động?) then (Tìm kiếm đồ án)
+    :Tìm kiếm đồ án;
+    :Nhập thông tin tìm kiếm;
+
+    |Hệ thống|
+    :Hiển thị đồ án cần tìm;
+
+    |Sinh viên|
+    stop
+
+else (Xem chi tiết đồ án)
+    :Xem chi tiết đồ án;
+
+    |Hệ thống|
+    :Hiển thị cửa sổ chi tiết đồ án;
+
+    |Sinh viên|
+    stop
+endif
+@enduml

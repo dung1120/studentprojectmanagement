@@ -1,0 +1,28 @@
+@startuml
+class SinhVien {
+    - maSV
+    - hoTen
+    + xemGiaoDienQuanLyDoAn()
+    + timKiemDoAn()
+    + xemChiTietDoAn()
+}
+
+class DoAn {
+    - maDoAn
+    - tieuDe
+    - linhVuc
+    - hocKi
+    - diem
+    + hienThiChiTiet()
+    + timKiem()
+}
+
+class FormQuanLyDoAn {
+    + hienThiGiaoDien()
+    + nhanYeuCauTimKiem()
+    + hienThiChiTiet()
+}
+
+SinhVien --> FormQuanLyDoAn : sử dụng giao diện
+FormQuanLyDoAn --> DoAn : truy vấn và hiển thị dữ liệu
+@enduml

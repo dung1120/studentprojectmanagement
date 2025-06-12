@@ -1,0 +1,66 @@
+@startuml
+' Biểu đồ lớp phân tích - Theo dõi tiến độ & Quản lý báo cáo
+
+class Task {
+    - taskId
+    - title
+    - content
+    - postedDate
+    - status
+    + assign()
+    + viewTask()
+}
+
+class Submission {
+    - submissionId
+    - submissionDate
+    - content
+    - feedback
+    + submit()
+    + viewFeedback()
+}
+
+class Report {
+    - reportId
+    - title
+    - content
+    - dateSubmitted
+    + submitReport()
+    + viewReport()
+}
+
+class Evaluation {
+    - evaluationId
+    - score
+    - comment
+    + evaluate()
+    + viewEvaluation()
+}
+
+class Student {
+    - studentId
+    - name
+    + submitTask()
+    + submitReport()
+    + viewEvaluation()
+}
+
+class Mentor {
+    - mentorId
+    - name
+    + assignTask()
+    + evaluateTask()
+    + evaluateReport()
+}
+
+Student --> Task : thực hiện
+Student --> Submission : nộp bài
+Student --> Report : nộp báo cáo
+Student --> Evaluation : xem đánh giá
+
+Mentor --> Task : giao
+Mentor --> Evaluation : đánh giá
+
+Task --> Submission : sinh ra
+Report --> Evaluation : được đánh giá
+@enduml

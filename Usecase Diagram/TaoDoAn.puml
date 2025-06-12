@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Giảng viên" as GV
+
+rectangle "Tạo đồ án" {
+    usecase "Tạo đồ án mới" as UC1
+    usecase "Hiển thị form tạo đồ án" as UC2
+    usecase "Nhập thông tin đồ án" as UC3
+    usecase "Lưu đồ án" as UC4
+    usecase "Thông báo thành công" as UC5
+
+    GV --> UC1
+    UC1 --> UC2 : <<include>>
+    UC1 --> UC3 : <<include>>
+    UC1 --> UC4 : <<include>>
+    UC1 --> UC5 : <<include>>
+}
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+class GiangVien {
+    - maGV
+    - hoTen
+    + taoDoAn()
+}
+
+class DoAn {
+    - maDoAn
+    - tieuDe
+    - linhVuc
+    - hocKi
+    - diem
+    + nhapThongTin()
+    + luuDoAn()
+}
+
+class FormTaoDoAn {
+    + hienThiForm()
+    + layThongTinNhap()
+}
+
+class ThongBao {
+    + hienThiThanhCong()
+}
+
+FormTaoDoAn --> DoAn : nhập thông tin
+DoAn --> ThongBao : thông báo kết quả
+GiangVien --> FormTaoDoAn : yêu cầu tạo đồ án
+@enduml

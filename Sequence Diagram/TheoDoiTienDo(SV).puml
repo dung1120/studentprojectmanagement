@@ -1,0 +1,45 @@
+@startuml
+actor "Sinh viên" as SV
+participant "Giao diện" as UI
+participant "Controller" as C
+participant "Hệ thống" as HT
+
+== Truy cập giao diện nhiệm vụ ==
+SV -> UI : Mở giao diện quản lý đồ án
+UI -> C : yêu cầu danh sách nhiệm vụ
+C -> HT : getAllTasks(svId)
+HT --> C : danh sách nhiệm vụ
+C --> UI : truyền danh sách nhiệm vụ
+UI --> SV : Hiển thị danh sách
+
+== Tìm kiếm nhiệm vụ ==
+SV -> UI : Nhập từ khóa tìm kiếm
+UI -> C : searchTasks(keyword, svId)
+C -> HT : searchTasks(keyword, svId)
+HT --> C : kết quả nhiệm vụ
+C --> UI : Gửi danh sách phù hợp
+UI --> SV : Hiển thị kết quả tìm kiếm
+
+== Xem chi tiết nhiệm vụ ==
+SV -> UI : Chọn nhiệm vụ
+UI -> C : getTaskDetail(taskId)
+C -> HT : getTaskDetail(taskId)
+HT --> C : chi tiết nhiệm vụ
+C --> UI : Hiển thị chi tiết
+UI --> SV : Giao diện chi tiết nhiệm vụ
+
+== Nộp bài làm ==
+SV -> UI : Chọn nộp bài
+UI -> C : openSubmitForm(taskId)
+C -> HT : getSubmitTemplate(taskId)
+HT --> C : Gửi form mẫu
+C --> UI : Hiển thị form
+UI --> SV : Giao diện nộp bài
+
+SV -> UI : Nhập nội dung và upload file
+UI -> C : submitAssignment(data)
+C -> HT : validateAndSave(data)
+HT --> C : Kết quả (thành công/thất bại)
+C --> UI : Thông báo kết quả
+UI --> SV : Hiển thị kết quả nộp bài
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+actor "Giảng viên" as GV
+participant "Giao diện" as UI
+participant "Controller" as C
+participant "Hệ thống" as HT
+
+GV -> UI : Mở chức năng tạo đồ án
+UI -> C : makeNewProject()
+C -> HT : Lấy form tạo đồ án
+HT --> C : Trả dữ liệu form
+C --> UI : Hiển thị form tạo đồ án
+
+GV -> UI : Nhập thông tin đồ án
+GV -> UI : Thêm sinh viên vào đồ án
+UI -> C : submitProject(data)
+activate C
+C -> HT : validate(data)
+HT --> C : Kết quả hợp lệ
+C -> HT : saveProject(data)
+HT --> C : Xác nhận lưu thành công
+deactivate C
+C --> UI : Hiển thị thông báo tạo thành công
+UI --> GV : Thông báo tạo đồ án thành công
+@enduml

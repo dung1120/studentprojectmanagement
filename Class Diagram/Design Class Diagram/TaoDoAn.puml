@@ -1,0 +1,40 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class GiangVien {
+    - maGV: String
+    - tenGV: String
+    + taoDoAn(): void
+}
+
+class DoAn {
+    - maDoAn: String
+    - tenDoAn: String
+    - moTa: String
+    - sinhVienList: List<SinhVien>
+    + luuThongTin(): void
+}
+
+class SinhVien {
+    - maSV: String
+    - tenSV: String
+}
+
+class DoAnController {
+    + hienFormTaoDoAn(): void
+    + nhapThongTin(ten, moTa): void
+    + luuDoAn(doAn: DoAn): void
+    + thongBaoKetQua(): void
+}
+
+class DoAnUI {
+    + hienThiForm(): void
+    + hienThiThongBao(msg: String): void
+}
+
+GiangVien --> DoAnController : sử dụng
+DoAnController --> DoAn : tạo & lưu
+DoAnController --> DoAnUI : gọi giao diện
+DoAn --> "0..n" SinhVien : liên kết
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+actor "Sinh viên" as SV
+participant "Giao diện Quản lý đồ án" as UI
+participant "Controller Đồ án" as Controller
+participant "Hệ thống Đồ án" as System
+
+SV -> UI : Truy cập giao diện quản lý đồ án
+UI -> Controller : Yêu cầu lấy danh sách đồ án
+Controller -> System : Truy vấn danh sách đồ án
+System --> Controller : Trả về danh sách
+Controller --> UI : Hiển thị danh sách đồ án
+
+SV -> UI : Nhập từ khóa tìm kiếm
+UI -> Controller : Gửi yêu cầu tìm kiếm
+Controller -> System : Tìm kiếm đồ án theo từ khóa
+System --> Controller : Trả về kết quả tìm kiếm
+Controller --> UI : Hiển thị kết quả tìm kiếm
+
+SV -> UI : Chọn đồ án cần xem chi tiết
+UI -> Controller : Yêu cầu chi tiết đồ án
+Controller -> System : Lấy thông tin chi tiết
+System --> Controller : Trả về chi tiết
+Controller --> UI : Hiển thị chi tiết đồ án
+@enduml

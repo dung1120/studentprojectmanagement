@@ -1,0 +1,43 @@
+@startuml
+title Sơ đồ trạng thái: Sinh viên (đề tài + nhiệm vụ)
+
+[*] --> Duoc_vao_du_an : Được giáo viên thêm vào dự án
+
+state Duoc_vao_du_an {
+}
+
+state De_xuat {
+}
+
+state Khong_duoc_chap_thuan {
+}
+
+state Doi_chap_thuan {
+}
+
+state Thuc_hien {
+    state Hien_nhiem_vu {
+    }
+    state Cho_xac_nhan {
+    }
+    state Da_cap_nhat {
+    }
+
+    Hien_nhiem_vu --> Cho_xac_nhan : Sinh viên nhập tiến độ
+    Cho_xac_nhan --> Da_cap_nhat : Xác nhận tiến độ
+    Da_cap_nhat --> Hien_nhiem_vu : Tiếp tục theo dõi nhiệm vụ
+    Hien_nhiem_vu --> [*] : Hoàn thành toàn bộ nhiệm vụ
+}
+
+state Doi_danh_gia {
+}
+
+Duoc_vao_du_an --> De_xuat : Tìm hiểu lĩnh vực
+De_xuat --> Doi_chap_thuan : Gửi đề xuất
+Doi_chap_thuan --> Thuc_hien : Được chấp thuận
+Doi_chap_thuan --> Khong_duoc_chap_thuan : Không chấp thuận
+Khong_duoc_chap_thuan --> De_xuat : Đề xuất lại
+Thuc_hien --> Doi_danh_gia : Hoàn thành đồ án
+Doi_danh_gia --> [*] : Giáo viên đánh giá
+
+@enduml

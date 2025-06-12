@@ -1,0 +1,30 @@
+@startuml
+class GiangVien {
+    - maGV
+    - hoTen
+    + truyCapDoAn()
+    + chinhSuaDoAn()
+    + xoaDoAn()
+}
+
+class DoAn {
+    - maDoAn
+    - tieuDe
+    - linhVuc
+    - hocKi
+    - diem
+    + hienThiThongTin()
+    + capNhatThongTin()
+    + xoa()
+}
+
+class FormQuanLyDoAn {
+    + hienThiGiaoDienQuanLy()
+    + nhanThongTinChinhSua()
+    + nhanLenhXoa()
+}
+
+FormQuanLyDoAn --> DoAn : thao tác dữ liệu
+GiangVien --> FormQuanLyDoAn : sử dụng giao diện
+GiangVien --> DoAn : trực tiếp chỉnh sửa, xóa
+@enduml

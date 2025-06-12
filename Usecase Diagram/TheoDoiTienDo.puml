@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Giảng viên" as GV
+actor "Sinh viên" as SV
+
+rectangle "Theo dõi tiến độ" {
+
+    usecase "Giao nhiệm vụ" as UC1
+    usecase "Cập nhật danh sách nhiệm vụ" as UC2
+    usecase "Xem danh sách nhiệm vụ" as UC3
+    usecase "Truy cập nhiệm vụ" as UC4
+    usecase "Nộp bài" as UC5
+    usecase "Cập nhật bài làm" as UC6
+    usecase "Đánh giá nhiệm vụ" as UC7
+    usecase "Cập nhật đánh giá" as UC8
+    usecase "Xem đánh giá" as UC9
+
+    GV --> UC1
+    UC1 --> UC2 : <<include>>
+
+    SV --> UC3
+    SV --> UC4
+    SV --> UC5
+    UC5 --> UC6 : <<include>>
+
+    GV --> UC7
+    UC7 --> UC8 : <<include>>
+
+    SV --> UC9
+}
+@enduml

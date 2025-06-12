@@ -1,0 +1,43 @@
+@startuml
+class SinhVien {
+    - maSV
+    - hoTen
+    + nopBaoCao()
+    + xemDanhGia()
+}
+
+class GiangVien {
+    - maGV
+    - hoTen
+    + xemBaoCao()
+    + danhGiaBaoCao()
+}
+
+class BaoCao {
+    - maBaoCao
+    - tieuDe
+    - noiDung
+    - ngayNop
+    + capNhatBaoCao()
+    + hienThiBaoCao()
+}
+
+class DanhGia {
+    - maDanhGia
+    - noiDung
+    - diem
+    + capNhatDanhGia()
+    + hienThiDanhGia()
+}
+
+class FormQuanLyBaoCao {
+    + hienThiFormNopBaoCao()
+    + hienThiFormXemBaoCao()
+    + hienThiFormDanhGia()
+}
+
+SinhVien --> FormQuanLyBaoCao : tương tác nộp, xem đánh giá
+GiangVien --> FormQuanLyBaoCao : tương tác xem, đánh giá báo cáo
+FormQuanLyBaoCao --> BaoCao : thao tác dữ liệu báo cáo
+FormQuanLyBaoCao --> DanhGia : thao tác dữ liệu đánh giá
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Sinh viên" as SV
+
+rectangle "Quản lý đồ án" {
+    usecase "Hiển thị giao diện quản lý đồ án" as UC1
+    usecase "Tìm kiếm đồ án" as UC2
+    usecase "Xem chi tiết đồ án" as UC3
+
+    SV --> UC1
+    SV --> UC2
+    SV --> UC3
+}
+@enduml

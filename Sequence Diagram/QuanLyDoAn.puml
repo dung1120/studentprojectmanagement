@@ -1,0 +1,30 @@
+@startuml
+actor "Sinh viên" as SV
+participant "Giao diệnn" as UI
+participant "Controller" as C
+participant "Hệ thống" as HT
+
+== Hiển thị giao diện ==
+SV -> UI : Truy cập chức năng quản lý đồ án
+UI -> C : loadProjectList()
+C -> HT : getAllProjects()
+HT --> C : Danh sách đồ án
+C --> UI : Hiển thị danh sách đồ án
+UI --> SV : Danh sách đồ án
+
+== Tìm kiếm đồ án ==
+SV -> UI : Nhập từ khóa tìm kiếm
+UI -> C : searchProject(keyword)
+C -> HT : findProjectByKeyword(keyword)
+HT --> C : Kết quả tìm kiếm
+C --> UI : Hiển thị kết quả
+UI --> SV : Kết quả tìm kiếm
+
+== Xem chi tiết đồ án ==
+SV -> UI : Chọn đồ án cần xem
+UI -> C : getProjectDetail(projectId)
+C -> HT : fetchProjectDetail(projectId)
+HT --> C : Thông tin chi tiết
+C --> UI : Hiển thị chi tiết
+UI --> SV : Chi tiết đồ án
+@enduml
